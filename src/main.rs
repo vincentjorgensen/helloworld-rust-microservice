@@ -68,7 +68,7 @@ async fn main() {
     // so rest assured errors do not go undetected when using `#[launch]`.
     //    let _ = http_rocket().launch().await;
     //let http_rocket = http_rocket();
-    if env::var("SSL_PORT").is_ok() {
+    if env::var("SERVER_SSL_PORT").is_ok() {
         // let https_rocket = https_rocket();
         let _ = future::join(http_rocket().launch(), https_rocket().launch()).await;
     } else {
@@ -77,7 +77,7 @@ async fn main() {
 }
 
 fn http_rocket() -> Rocket<Build> {
-    let port: u16 = parse_env("PORT").unwrap_or(DEFAULT_PORT);
+    let port: u16 = parse_env("SERVER_PORT").unwrap_or(DEFAULT_PORT);
 
     let helloworld: HelloWorld = HelloWorld {
         version: parse_env("SERVICE_VERSION").unwrap_or(DEFAULT_VERSION.into()),
