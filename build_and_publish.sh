@@ -10,6 +10,6 @@ docker push "$repo":"$tag"
 
 
 if [[ -n "$latest" ]]; then
-  docker tag $repo":"$tag" "$repo":latest
+  docker tag "$repo":"$tag" "$repo":latest
   docker push "$repo":latest
 fi
