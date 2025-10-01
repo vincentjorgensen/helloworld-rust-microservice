@@ -17,9 +17,9 @@
 A Helloworld microservice implemented in rust using express that is best
 suited for testing network topologies.
 
-Current version: `0.1.0`
+Current version: `0.1.1`
 
-dockerhub: `vincentjorgensen/rust-helloworld:0.1.0`
+dockerhub: `vincentjorgensen/rust-helloworld:0.1.1`
 
 <!-- TOC --><a name="environment-variables"></a>
 ## Environment variables
