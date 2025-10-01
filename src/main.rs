@@ -1,8 +1,8 @@
 #[macro_use]
 extern crate rocket;
 
-use futures::future;
 use rocket::config::TlsConfig;
+use rocket::futures::future;
 use rocket::Build;
 use rocket::Rocket;
 use rocket::State;

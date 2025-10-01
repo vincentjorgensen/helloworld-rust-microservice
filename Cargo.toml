@@ -5,5 +5,4 @@ edition = "2024"
 
 [dependencies]
 rocket = { version = "0.5.1", features = ["tls"] }
-futures = "0.3.31"
 
