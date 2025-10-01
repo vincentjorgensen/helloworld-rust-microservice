@@ -97,7 +97,7 @@ fn http_rocket() -> Rocket<Build> {
 }
 
 fn https_rocket() -> Rocket<Build> {
-    let ssl_port: u16 = parse_env("SSL_PORT").unwrap_or(DEFAULT_SSL_PORT);
+    let ssl_port: u16 = parse_env("SERVER_SSL_PORT").unwrap_or(DEFAULT_SSL_PORT);
     let ssl_key: String = parse_env("SSL_KEY").unwrap();
     let ssl_cert: String = parse_env("SSL_CERT").unwrap();
 
