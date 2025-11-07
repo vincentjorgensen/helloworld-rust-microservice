@@ -5,7 +5,7 @@ latest="$2"
 
 repo=vincentjorgensen/rust-helloworld
 
-docker build -t "$repo":"$tag" .
+docker buildx build --platform linux/amd64,linux/arm64 -t "$repo":"$tag" .
 docker push "$repo":"$tag"
 
 
