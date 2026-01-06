@@ -17,9 +17,9 @@
 A Helloworld microservice implemented in rust using express that is best
 suited for testing network topologies.
 
-Current version: `0.1.1`
+Current version: `0.1.2`
 
-dockerhub: `vincentjorgensen/rust-helloworld:0.1.1`
+dockerhub: `vincentjorgensen/rust-helloworld:0.1.2` x86_64 and arm64
 
 <!-- TOC --><a name="environment-variables"></a>
 ## Environment variables
@@ -49,7 +49,7 @@ Always returns `Hello World!\n`
 Useful if Helloworld has multiple backends. `version` can be tailored using
 environment variables to indicate which backend is being hit.
 
-Returns `version: $SERVICE_VERSION, zone: $ZONE, region: $REGION, instance: $HOSTNAME, proto: (http|tls)\n`
+Returns `version: $SERVICE_VERSION, zone: $ZONE, region: $REGION, instance: $HOSTNAME, protocol: (http|tls)\n`
 
 <!-- TOC --><a name="healthz"></a>
 ### /healthz
@@ -92,7 +92,7 @@ networks:
 services:
   helloworld:
     container_name: helloworld
-    image: vincentjorgensen/rust-helloworld:0.1.0
+    image: vincentjorgensen/rust-helloworld:0.1.3
     networks:
       default:
         ipv4_address: 192.168.96.17
@@ -108,6 +108,13 @@ services:
       SERVER_SSL_PORT: 8443
       SSL_KEY: /ssl/root.key
       SSL_CERT: /ssl/root.crt
+    healthcheck:
+      interval: 30s
+      retries: 3
+      start_period: 15s
+      start_interval: 5s
+      test: ["CMD", "curl", "-s", "http://localhost:8080/healthz", "-o", "/dev/null"]
+      timeout: 3s
     volumes:
     - /etc/localtime:/etc/localtime:ro
     - /PATH/TO/example/ssl:/ssl:ro
